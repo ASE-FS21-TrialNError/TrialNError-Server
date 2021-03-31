@@ -20,7 +20,8 @@ export class UsersController {
 
   @Get('profile')
   getUser(@AuthUser() user: UserDto): UserProfileDto {
-    const { email, id, name } = user;
+   // await this.usersService.getUser()
+    const { email, id, name } = user || {};
     return { email, id, name };
   }
 }

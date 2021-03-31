@@ -1,9 +1,3 @@
-export const ROLES = {
-  ADMIN: 'ROLES.ADMIN',
-  CUSTOMER: 'ROLES.CUSTOMER',
-};
-
-
 
 // Order status ispired from stripe order api (for future integration with stripe orders api).
 // https://stripe.com/docs/orders/guide#understanding-order-statuses
@@ -19,8 +13,5 @@ export const ENV_KEYS = {
 };
 
 export const EMAIL_TEMPLATES = {
-  RESET_PASSWORD_EMAIL: 'reset_password_email',
-  RETURN_POLICY_EMAIL: 'return_policy_email',
-  PRODUCT_CONDITION_EMAIL: 'product_condition_email',
-  PURCHASE_CONFIRMATION_EMAIL: 'purchase_confirmation_email',
+  LOGIN_OTP_EMAIL: 'login_otp_email',
 };
