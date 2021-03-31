@@ -11,9 +11,10 @@ export class UsersService {
   ) {}
 
   async create(userDto: UserDto): Promise<User> {
-    const { name, email } = userDto;
+    const { firstname, lastname,email } = userDto;
     const user = new User();
-    user.name = name;
+    user.firstname = firstname;
+    user.lastname=lastname;
     user.email = email;
     user.createdAt = new Date();
     user.updatedAt = new Date();

@@ -21,7 +21,7 @@ export class UsersController {
   @Get('profile')
   getUser(@AuthUser() user: UserDto): UserProfileDto {
    // await this.usersService.getUser()
-    const { email, id, name } = user || {};
-    return { email, id, name };
+    const { email, id, firstname ,lastname} = user || {};
+    return { email, id, firstname ,lastname};
   }
 }
