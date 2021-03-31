@@ -7,8 +7,13 @@ interface User extends Base, Paginate {}
 @plugin(paginate)
 class User extends TimeStamps {
   id: string;
+  
+
   @prop({ required: true })
-  name!: string;
+  firstname!: string;
+
+  @prop({ required: true })
+  lastname!: string;
 
   @prop({ unique: true, required: true })
   email!: string;

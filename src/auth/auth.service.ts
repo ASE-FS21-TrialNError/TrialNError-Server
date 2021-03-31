@@ -32,7 +32,7 @@ export class AuthService {
   ) {}
 
   async registerUser(createUserDto: CreateUserDto): Promise<User> {
-    const { email, password, name } = createUserDto;
+    const { email, password, firstname,lastname } = createUserDto;
     const userAuthRegistered = await this.getByEmail(email);
     if (!userAuthRegistered) {
       const userAuth = new UserAuth();
@@ -43,7 +43,8 @@ export class AuthService {
           _id: userAuthCreated._id,
           id: userAuthCreated.id,
           email,
-          name,
+          firstname,
+          lastname
         });
       });
     } else if (userAuthRegistered.emailVerified === false) {

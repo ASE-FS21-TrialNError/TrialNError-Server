@@ -39,7 +39,7 @@ export class AuthController {
     return new ResponseSuccess('LOGIN.SUCCESS', response);
   }
 
-  @Post('email/verify')
+  @Post('email/otp')
   public async verifyEmail(
     @Body('email') email: string,
     @Body('token') token: string,

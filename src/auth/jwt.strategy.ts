@@ -22,14 +22,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any): Promise<UserDto> {
     const user = await this.usersService.getByEmail(payload.email);
     const {
-      name,
+      firstname,
+      lastname,
       email,
       _id,
       id,
     } = user;
     return {
       _id,
-      name,
+      firstname,
+      lastname,
       email,
       id,
     };
