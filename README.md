@@ -3,9 +3,13 @@
 
 
 ## Description
+Prerequisite  is laster Nodejs version
 
-
-
+## Set Up Environment variable
+``` 
+ Please Copy the properties from [Sample.env](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/blob/main/sample.env) and  created the .env file is root folder.
+ Set the Environment variable like JWT secret, Mongodb URL and SMTP configuration in this file.
+```
 ## Installation
 
 ```bash
