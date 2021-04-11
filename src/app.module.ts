@@ -4,6 +4,7 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { AppsModule } from './/apps/apps.module';
 import { AuthModule } from './auth/auth.module';
 import { ENV_KEYS } from './common/constants/application.contants'
 import { MailerModule } from '@nestjs-modules/mailer';
@@ -47,6 +48,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
     }),
     UsersModule,
     AuthModule,
+    AppsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
