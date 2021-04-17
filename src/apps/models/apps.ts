@@ -32,19 +32,19 @@ class Apps extends TimeStamps {
   category_andr!: string;
 
   @prop({ default: false })
-  price_ios!: string;
+  price_ios!: number;
 
   @prop({ default: false })
   price_andr!: number;
 
   @prop({ default: false })
-  rating_ios!: string;
+  rating_ios!: number;
 
   @prop({ default: false })
   rating_andr!: number;
 
   @prop({ default: false })
-  rating_count_ios!: string;
+  rating_count_ios!: number;
 
   @prop({ default: false })
   rating_count_andr!: number;
