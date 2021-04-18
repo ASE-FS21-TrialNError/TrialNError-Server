@@ -34,7 +34,7 @@ export class AppsController {
   }
 
   @Get(':id')
-  asyncgetAppByID(
+  getAppByID(
     @Param('id') appID: string,
   ){
       return this.appsService.getAppByID(appID);
