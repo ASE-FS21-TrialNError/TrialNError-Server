@@ -16,6 +16,7 @@ export class AppsService {
     page: number = 1,
     limit: number = 10,
     sort: string ,
+    name:string,
     category_andr: string ,
     category_ios: string ,
     price_andr: string ,
@@ -41,16 +42,23 @@ export class AppsService {
     filter =!content_rating_andr?filter: { ...filter, content_rating_andr};
     filter =!content_rating_ios?filter: { ...filter, content_rating_ios};
 
+
+    if(name){
+      filter= { ...filter, name:{$regex: name, $options: 'i'}};
+    }
     let  sortFilter =  { page, limit,sort:{}};
-    let splittedSort=sort.split("-", 2);
-    if(splittedSort.length==2)
+    if(sort)
     {
-      if(splittedSort[1]=='D')
+      let splittedSort=sort.split("-", 2);
+      if(splittedSort.length==2)
       {
-        sortFilter={...sortFilter,sort:{ [splittedSort[0]]: -1 }}
-      } else if(splittedSort[1]=='A')
-      {
-        sortFilter={...sortFilter,sort:{ [splittedSort[0]]: 1 }}
+        if(splittedSort[1]=='D')
+        {
+          sortFilter={...sortFilter,sort:{ [splittedSort[0]]: -1 }}
+        } else if(splittedSort[1]=='A')
+        {
+          sortFilter={...sortFilter,sort:{ [splittedSort[0]]: 1 }}
+        }
       }
     }
 
