@@ -55,13 +55,16 @@ export class AppsService {
         if(splittedSort[1]=='D')
         {
           sortFilter={...sortFilter,sort:{ [splittedSort[0]]: -1 }}
+          filter= { ...filter, [splittedSort[0]]: {$exists: true,$gt: -1}}
+         
         } else if(splittedSort[1]=='A')
         {
+          
           sortFilter={...sortFilter,sort:{ [splittedSort[0]]: 1 }}
+          filter= { ...filter, [splittedSort[0]]: {$exists: true,$gt: -1}}
         }
       }
     }
-
     const result = await this.appsModel.paginate(
       filter,
       sortFilter
@@ -91,4 +94,5 @@ export class AppsService {
             .then(result => result);
           return result;
     }
+
   }
