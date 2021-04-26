@@ -28,15 +28,13 @@ jobs:
 
     - name: npm install
       run: npm install
-
-    - name: Test ${{ matrix.test_number }}
-      run: jest --coverage 
-    - name: Coveralls Parallel
+      
+    - name:  make test-coverage
+      run: npm run test:cov
+    - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
-        github-token: ${{ secrets.github_token }}
-        flag-name: run-${{ matrix.test_number }}
-        parallel: true
+        github-token: ${{ secrets.GITHUB_TOKEN }}
     
     # create .netrc file for heroku authentication
     # https://devcenter.heroku.com/articles/authentication
