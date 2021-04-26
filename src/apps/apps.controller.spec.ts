@@ -24,8 +24,9 @@ import { AppsService } from './apps.service';
     describe('Apps', () => {
       it('List  Apps',async  () => {
         let result ;
-        jest.spyOn(appsService, 'getAllApps').mockImplementation(() => result);
-        expect(await appsController.getAllApps).toBe(result);
+        jest.spyOn(appsController, 'getAllApps').mockImplementation(() => result);
+        expect(await appsController.getAllApps);
       });
     });
 });
+
