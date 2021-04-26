@@ -1,8 +1,8 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './models/user';
-import { AuthUser } from 'src/common/decorators/auth-user.decorator';
-import { JwtAuthGaurd } from 'src/common/utils/helpers';
+import { AuthUser } from '../common/decorators/auth-user.decorator';
+import { JwtAuthGaurd } from '../common/utils/helpers';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { UserDto } from './dto/user.dto';
 import { UserProfileDto } from './dto/user-profile.dto';
