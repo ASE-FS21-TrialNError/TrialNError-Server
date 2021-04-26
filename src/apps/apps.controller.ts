@@ -1,6 +1,6 @@
 import { Controller, Get, UseGuards,Query,ParseIntPipe, Param } from '@nestjs/common';
 import { AppsService } from './apps.service';
-import { JwtAuthGaurd } from 'src/common/utils/helpers';
+import { JwtAuthGaurd } from '../common/utils/helpers';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
 
@@ -37,5 +37,4 @@ export class AppsController {
   ){
       return this.appsService.getAppByID(appID);
     }
-
 }
