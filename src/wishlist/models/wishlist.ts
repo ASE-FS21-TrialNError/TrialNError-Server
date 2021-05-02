@@ -1,5 +1,6 @@
 import { plugin, prop } from '@typegoose/typegoose';
 import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
+import { ObjectId } from 'mongoose';
 import * as paginate from 'mongoose-paginate';
 import { Paginate } from '../../common/utils/paginate';
 
@@ -11,7 +12,7 @@ class Wishlist extends TimeStamps {
   userEmail: string;
 
   @prop({ required: true })
-  apps: string[] = [];
+  apps: ObjectId[] = [];
 
 }
 

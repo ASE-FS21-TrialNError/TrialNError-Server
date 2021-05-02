@@ -5,6 +5,8 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { UserDto } from '../users/dto/user.dto';
 import { ResponseSuccess } from '../common/dto/response.dto';
 import { Apps} from '../apps/models/apps';
+import { PaginatedResponse } from '../common/interface/paginated.response';
+import { ObjectId } from 'mongoose';
 
 
 @Injectable()
@@ -15,7 +17,7 @@ export class WishlistService {
     @InjectModel(Apps) 
     private readonly appsModel: ReturnModelType<typeof Apps>,
   ) {}
-  async addApp(appId: string,user: UserDto) {
+  async addApp(appId: ObjectId,user: UserDto) {
       const wishList = await this.wishlistModel.findOne({userEmail:user.email})
             .catch(err => {
               throw new HttpException('WishList Not Found', HttpStatus.NOT_FOUND);
@@ -32,7 +34,7 @@ export class WishlistService {
       return new ResponseSuccess<void>('APP ADDEDED FROM WISHLIST');
   }
 
-  async deleteApp(appId: string,user: UserDto) {
+  async deleteApp(appId: ObjectId,user: UserDto) {
     const wishList = await this.wishlistModel.findOne({userEmail:user.email})
           .catch(err => {
             throw new HttpException('WishList Not Found', HttpStatus.NOT_FOUND);
@@ -49,5 +51,21 @@ export class WishlistService {
       }
     await this.wishlistModel.findByIdAndUpdate(wishList._id,{apps})
     return new ResponseSuccess<void>('APP DELETED FROM WISHLIST');
+  }
+  async getAppsInWishlist(user: UserDto) : Promise<Wishlist> {
+    return await this.wishlistModel.findOne({userEmail:user.email})
+          .catch(err => {
+            throw new HttpException('WishList Not Found', HttpStatus.NOT_FOUND);
+          })
+          .then(result => result);    
+  }
+  async getApps(user: UserDto) : Promise<Apps[]> {
+    const wishlist= await this.wishlistModel.findOne({userEmail:user.email})
+          .catch(err => {
+            throw new HttpException('WishList Not Found', HttpStatus.NOT_FOUND);
+          })
+          .then(result => result);    
+    return await this.appsModel.find({_id: { $in: wishlist.apps }});
+          
   }
 }
