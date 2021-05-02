@@ -16,12 +16,17 @@ import {
   EMAIL_TEMPLATES,
 } from '../common/constants/application.contants';
 import { join } from 'path';
+import { Wishlist } from '../wishlist/models/wishlist';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(UserAuth)
     private readonly userAuthModel: ReturnModelType<typeof UserAuth>,
+
+    @InjectModel(Wishlist)
+    private readonly wishlisModel: ReturnModelType<typeof Wishlist>,
+
     @InjectModel(EmailVerification)
     private readonly emailVerificationModel: ReturnModelType<
       typeof EmailVerification
@@ -38,6 +43,7 @@ export class AuthService {
       const userAuth = new UserAuth();
       userAuth.email = email;
       userAuth.password = password;
+      this.createWishList(email);
       return this.userAuthModel.create(userAuth).then(userAuthCreated => {
         return this.usersService.create({
           _id: userAuthCreated._id,
@@ -46,12 +52,19 @@ export class AuthService {
           firstname,
           lastname
         });
+        
       });
     } else if (userAuthRegistered.emailVerified === false) {
       return await this.usersService.getByEmail(email);
     } else {
       throw new AppException(APP_ERROR_CODES.REGISTRATION.EMAIL_ALREADY_EXISTS);
     }
+  }
+  createWishList(email: string)
+  {
+    const wishlist=new Wishlist;
+    wishlist.userEmail=email;
+    this.wishlisModel.create(wishlist)
   }
 
   create(userAuth: UserAuth): Promise<UserAuth> {
