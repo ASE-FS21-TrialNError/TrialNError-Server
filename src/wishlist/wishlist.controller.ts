@@ -4,6 +4,7 @@ import { JwtAuthGaurd } from '../common/utils/helpers';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { AuthUser } from '../common/decorators/auth-user.decorator';
 import { UserDto } from '../users/dto/user.dto';
+import { ObjectId } from 'mongoose';
 
 
 @ApiBearerAuth()
@@ -15,15 +16,30 @@ export class WishListController {
   @Get('add/:id') 
   add(
     @AuthUser() user: UserDto,
-    @Param('id') appID: string,
+    @Param('id') appID: ObjectId,
   ){
       return this.wishlistService.addApp(appID,user);
     }
-    @Get('delete/:id') 
-    delete(
+  @Get('delete/:id') 
+  delete(
+    @AuthUser() user: UserDto,
+    @Param('id') appID: ObjectId,
+  ){
+      return this.wishlistService.deleteApp(appID,user);
+    }
+
+    @Get('getApp/id') 
+    getAppIDWishList(
       @AuthUser() user: UserDto,
-      @Param('id') appID: string,
     ){
-        return this.wishlistService.deleteApp(appID,user);
+        return this.wishlistService.getAppsInWishlist(user);
       }
+
+      @Get('getApps') 
+      getAppsWishList(
+        @AuthUser() user: UserDto,
+      ){
+          return this.wishlistService.getApps(user);
+        }
+    
 }
