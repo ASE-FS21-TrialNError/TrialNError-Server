@@ -1,14 +1,15 @@
 import { plugin, prop } from '@typegoose/typegoose';
 import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
+import { ObjectId } from 'mongoose';
 import * as paginate from 'mongoose-paginate';
 import { Paginate } from 'src/common/utils/paginate';
 
-interface Apps extends Base, Paginate {}
+interface Apps extends  Paginate {}
 
 @plugin(paginate)
 class Apps extends TimeStamps {
  
-  
+  _id:ObjectId
 
   @prop({ required: true })
   name!: string;
