@@ -3,7 +3,6 @@ import { Apps } from './models/apps';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { PaginatedResponse } from '../common/interface/paginated.response';
-import { resourceLimits } from 'node:worker_threads';
 
 @Injectable()
 export class AppsService {
