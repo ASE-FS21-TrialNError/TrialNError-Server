@@ -16,6 +16,10 @@ describe('WishListController', () => {
             return {}
         }),
 
+        deleteApps: jest.fn((user, appList) => {
+            return {}
+        }),
+
         getAppsInWishlist: jest.fn((user) => {
             return {
                 apps: [],
@@ -25,7 +29,7 @@ describe('WishListController', () => {
 
         getApps: jest.fn((user) => {
             return []
-        }),        
+        }),
     };
 
     beforeEach(async () => {
@@ -68,6 +72,14 @@ describe('WishListController', () => {
         expect(mockWishlistService.deleteApp).toHaveBeenCalled();
     });
 
+    it('Testing correctness of WishList deleteApps method', () => {
+        // Checking the result of the WishList deleteApps method
+        expect(wishListController.deleteApps(dto, { apps: [] })).toEqual({});
+
+        // Making sure that mockWishlistService is used
+        expect(mockWishlistService.deleteApps).toHaveBeenCalled();
+    });
+
     it('Testing correctness of WishList getAppIDWishList method', () => {
         // Checking the result of the WishList getAppIDWishList method
         expect(wishListController.getAppIDWishList(dto)).toEqual(
@@ -80,11 +92,4 @@ describe('WishListController', () => {
         expect(mockWishlistService.getAppsInWishlist).toHaveBeenCalled();
     });
 
-    it('Testing correctness of WishList getAppsWishList method', () => {
-        // Checking the result of the WishList getAppsWishList method
-        expect(wishListController.getAppsWishList(dto)).toEqual([]);
-
-        // Making sure that mockWishlistService is used
-        expect(mockWishlistService.getApps).toHaveBeenCalled();
-    });
 });
