@@ -7,6 +7,7 @@ import { ResponseSuccess } from '../common/dto/response.dto';
 import { Apps} from '../apps/models/apps';
 import { PaginatedResponse } from '../common/interface/paginated.response';
 import { ObjectId } from 'mongoose';
+import {AppseDto} from './dto/apps.dto';
 
 
 @Injectable()
@@ -52,6 +53,26 @@ export class WishlistService {
     await this.wishlistModel.findByIdAndUpdate(wishList._id,{apps})
     return new ResponseSuccess<void>('APP DELETED FROM WISHLIST');
   }
+  async deleteApps(user: UserDto,appsList:AppseDto) {
+    const wishList = await this.wishlistModel.findOne({userEmail:user.email})
+          .catch(err => {
+            throw new HttpException('WishList Not Found', HttpStatus.NOT_FOUND);
+          })
+          .then(result => result);
+        
+    let deleteApps=appsList.apps;
+    let apps=wishList.apps;
+    for(const app of deleteApps) {
+      console.log(app)
+      const index = apps.indexOf(app);
+      if (index > -1) {
+        apps.splice(index, 1);
+      }
+     }
+    await this.wishlistModel.findByIdAndUpdate(wishList._id,{apps})
+    return new ResponseSuccess<void>('APPS DELETED FROM WISHLIST');
+  }
+
   async getAppsInWishlist(user: UserDto) : Promise<Wishlist> {
     return await this.wishlistModel.findOne({userEmail:user.email})
           .catch(err => {
