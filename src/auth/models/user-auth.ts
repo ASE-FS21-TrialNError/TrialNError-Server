@@ -3,7 +3,7 @@ import { prop, pre, arrayProp } from '@typegoose/typegoose';
 import { hashSync } from 'bcrypt';
 
 interface UserAuth extends Base {}
-
+//user auth model
 @pre<UserAuth>('save', function() {
   if (this.isModified('password')) {
     this.password = hashSync(this.password, 10);

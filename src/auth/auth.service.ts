@@ -36,9 +36,11 @@ export class AuthService {
     private readonly mailerService: MailerService,
   ) {}
 
+  // Create new user
   async registerUser(createUserDto: CreateUserDto): Promise<User> {
     const { email, password, firstname,lastname } = createUserDto;
     const userAuthRegistered = await this.getByEmail(email);
+    //check if email is already exist
     if (!userAuthRegistered) {
       const userAuth = new UserAuth();
       userAuth.email = email;
@@ -60,25 +62,29 @@ export class AuthService {
       throw new AppException(APP_ERROR_CODES.REGISTRATION.EMAIL_ALREADY_EXISTS);
     }
   }
+  //create wishlist for user 
   createWishList(email: string)
   {
     const wishlist=new Wishlist;
     wishlist.userEmail=email;
     this.wishlisModel.create(wishlist)
   }
-
+//create auth
   create(userAuth: UserAuth): Promise<UserAuth> {
     return this.userAuthModel.create(userAuth);
   }
 
+  //get auth by  ID
   get(id: string): Promise<UserAuth> {
     return this.userAuthModel.findById(id).exec();
   }
 
+  //get auth by email ID
   getByEmail(email: string): Promise<UserAuth> {
     return this.userAuthModel.findOne({ email }).exec();
   }
 
+  //Check if email is authorized 
   async createEmailToken(email: string): Promise<boolean> {
     const emailVerification = await this.emailVerificationModel.findOne({
       email,
@@ -107,7 +113,7 @@ export class AuthService {
   }
 
   
-
+//send OTP email
   async sendEmailVerification(email: string): Promise<boolean> {
     const emailVerification = await this.emailVerificationModel
       .findOne({
@@ -135,12 +141,13 @@ export class AuthService {
     password: string,
   ) {
     const userAuth = await this.userAuthModel.findOne({ email });
+    //check if user is exist
     if (!userAuth) {
       throw new AppException(APP_ERROR_CODES.LOGIN.USER_NOT_FOUND);
     } else if (userAuth.emailVerified === false) {
       throw new AppException(APP_ERROR_CODES.LOGIN.EMAIL_NOT_VERIFIED);
     }
-
+    //check the user password
     const isValidPass = await compare(password, userAuth.password);
 
 
@@ -151,6 +158,7 @@ export class AuthService {
     }
   }
 
+  //get user token
   getAccessTokenFromUser(userAuth: UserAuth) {
     const payload = {
       email: userAuth.email,
@@ -159,6 +167,7 @@ export class AuthService {
     const accessToken = this.jwtService.sign(payload);
     return { token: accessToken };
   }
+  //send Token
   async verifyEmail(email: string, token: string) {
     const emailVerification = await this.emailVerificationModel.findOne({
       email,

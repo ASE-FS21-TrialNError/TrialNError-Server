@@ -5,7 +5,7 @@ import * as paginate from 'mongoose-paginate';
 import { Paginate } from 'src/common/utils/paginate';
 
 interface Apps extends  Paginate {}
-
+//App Model
 @plugin(paginate)
 class Apps extends TimeStamps {
  

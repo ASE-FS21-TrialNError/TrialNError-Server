@@ -12,9 +12,10 @@ export class AppsService {
     private readonly appsModel: ReturnModelType<typeof Apps>,
   ) {}
 
+  //get the APPS based on filter and sort 
   async getAllApps(
-    page: number = 1,
-    limit: number = 10,
+    page: number = 1, //set the page 1 as default
+    limit: number = 10,//set the page limit  10 as default
     sort: string ,
     name:string,
     category_andr: string ,
@@ -44,23 +45,24 @@ export class AppsService {
 
 
     if(name){
-      filter= { ...filter, name:{$regex: name, $options: 'i'}};
+      filter= { ...filter, name:{$regex: name, $options: 'i'}}; //case insensitive 
     }
+    //sort parse the ASC or DESC order 
     let  sortFilter =  { page, limit,sort:{}};
     if(sort)
     {
       let splittedSort=sort.split("-", 2);
       if(splittedSort.length==2)
       {
-        if(splittedSort[1]=='D')
+        if(splittedSort[1]=='D') //D is DESC order
         {
-          sortFilter={...sortFilter,sort:{ [splittedSort[0]]: -1 }}
+          sortFilter={...sortFilter,sort:{ [splittedSort[0]]: -1 }} // -1 is DESC order in mongodb
           filter= { ...filter, [splittedSort[0]]: {$exists: true,$gt: -1}}
          
-        } else if(splittedSort[1]=='A')
+        } else if(splittedSort[1]=='A') //A is ASC Order
         {
           
-          sortFilter={...sortFilter,sort:{ [splittedSort[0]]: 1 }}
+          sortFilter={...sortFilter,sort:{ [splittedSort[0]]: 1 }} // 1 is ASC order in mongodb
           filter= { ...filter, [splittedSort[0]]: {$exists: true,$gt: -1}}
         }
       }
@@ -75,6 +77,7 @@ export class AppsService {
       total: result.total,
     };
   }
+  //parse the range filter field 
   getFieldRange(rangeField :string){
     var splittedRange = rangeField.split("_", 2); 
     var $gt: number = +splittedRange[0];
@@ -85,11 +88,12 @@ export class AppsService {
     return { $gt , $lt }
   }
 
+  //get app by ID 
   async getAppByID(appId: string) : Promise<Apps>
     {
       const result = await this.appsModel.findById(appId)
             .catch(err => {
-              throw new HttpException('App not found', HttpStatus.NOT_FOUND);
+              throw new HttpException('App not found', HttpStatus.NOT_FOUND); // Error when APP is not found 
             })
             .then(result => result);
           return result;

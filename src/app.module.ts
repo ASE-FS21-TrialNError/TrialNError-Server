@@ -10,6 +10,7 @@ import { ENV_KEYS } from './common/constants/application.contants'
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 
+/* Module imports all Globel Configuration like Host, Port  */
 
 @Module({
   imports: [
@@ -18,11 +19,11 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         transport: {
-          host: configService.get<string>(ENV_KEYS.SMTP_HOST),
-          port: configService.get<string>(ENV_KEYS.SMTP_PORT),
+          host: configService.get<string>(ENV_KEYS.SMTP_HOST),  // Set the SMTO Host for our email Server 
+          port: configService.get<string>(ENV_KEYS.SMTP_PORT), // Set the SMTO PORT for our email Server 
           auth: {
-            user: configService.get<string>(ENV_KEYS.SMTP_USER),
-            pass: configService.get<string>(ENV_KEYS.SMTP_PASSWORD),
+            user: configService.get<string>(ENV_KEYS.SMTP_USER), // Set the SMTO USername for our email Server 
+            pass: configService.get<string>(ENV_KEYS.SMTP_PASSWORD),// Set the SMTO Passsword for our email Server 
           },
         },
         defaults: {
@@ -40,7 +41,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
     TypegooseModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get(ENV_KEYS.MONGODB_URI),
+        uri: configService.get(ENV_KEYS.MONGODB_URI),// Set the MongoDB source from .env file
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

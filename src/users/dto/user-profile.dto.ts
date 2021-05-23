@@ -1,3 +1,4 @@
+//User profile DTO
 export interface UserProfileDto {
   id: string;
   firstname: string;

@@ -9,7 +9,7 @@ export class UsersService {
   constructor(
     @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>,
   ) {}
-
+      //Create new user 
   async create(userDto: UserDto): Promise<User> {
     const { firstname, lastname,email } = userDto;
     const user = new User();
@@ -20,19 +20,20 @@ export class UsersService {
     user.updatedAt = new Date();
     return this.userModel.create(user);
   }
-
+  //Get all users
   async findAll(): Promise<User[] | null> {
     return this.userModel.find().exec();
   }
-
+  //get user by ID
   getUser(id: string): Promise<User | null> {
     return this.userModel.findById(id).exec();
   }
-
+  //get user by email  
   getByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
   }
 
+  //update the user 
   updateUser(userId, user: Partial<User>) {
     return this.userModel.findByIdAndUpdate(userId, user).exec();
   }
