@@ -1,32 +1,42 @@
-import { Controller, Get, UseGuards,Query,ParseIntPipe, Param,Body, Post, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Put,UseGuards,Query,ParseIntPipe, Param,Body, Post, HttpCode, HttpStatus } from '@nestjs/common';
 import { WishlistService } from './wishlist.service';
 import { JwtAuthGaurd } from '../common/utils/helpers';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { AuthUser } from '../common/decorators/auth-user.decorator';
 import { UserDto } from '../users/dto/user.dto';
 import { ObjectId } from 'mongoose';
+import {AppseDto} from './dto/apps.dto';
 
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGaurd())
 @Controller('wishlist')
 export class WishListController {
-  constructor(private readonly wishlistService: WishlistService) {}
+  constructor(private readonly wishlistService: WishlistService) { }
 
-  @Get('add/:id') 
+  @Get('add/:id')
   add(
     @AuthUser() user: UserDto,
     @Param('id') appID: ObjectId,
-  ){
-      return this.wishlistService.addApp(appID,user);
-    }
-  @Get('delete/:id') 
+  ) {
+    return this.wishlistService.addApp(appID, user);
+  }
+  @Get('delete/:id')
   delete(
     @AuthUser() user: UserDto,
     @Param('id') appID: ObjectId,
-  ){
-      return this.wishlistService.deleteApp(appID,user);
-    }
+  ) {
+    return this.wishlistService.deleteApp(appID, user);
+  }
+
+    @Put('deleteApps')
+    @HttpCode(HttpStatus.OK)
+    deleteApps(
+      @AuthUser() user: UserDto,
+      @Body() appList: AppseDto
+    ){
+        return this.wishlistService.deleteApps(user,appList);
+      }
 
     @Get('getApp/id') 
     getAppIDWishList(
@@ -35,11 +45,4 @@ export class WishListController {
         return this.wishlistService.getAppsInWishlist(user);
       }
 
-      @Get('getApps') 
-      getAppsWishList(
-        @AuthUser() user: UserDto,
-      ){
-          return this.wishlistService.getApps(user);
-        }
-    
 }
