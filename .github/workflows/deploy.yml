@@ -20,9 +20,21 @@ jobs:
     # checkout repository code
     - uses: actions/checkout@v1
    
-    # uncomment for assignment 2-4
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
+   # Test Coveralls
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+
+    - name: npm install
+      run: npm install
+      
+    - name:  make test-coverage
+      run: npm run test:cov
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
     
     # create .netrc file for heroku authentication
     # https://devcenter.heroku.com/articles/authentication

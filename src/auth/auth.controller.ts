@@ -1,15 +1,18 @@
 import { Controller, Body, Post, HttpCode, HttpStatus } from '@nestjs/common';
-import { CreateUserDto } from 'src/users/dto/user.dto';
+import { CreateUserDto } from '../users/dto/user.dto';
 import { AuthService } from './auth.service';
-import { IResponse } from 'src/common/interface/response.interface';
-import { ResponseSuccess } from 'src/common/dto/response.dto';
+import { IResponse } from '../common/interface/response.interface';
+import { ResponseSuccess } from '../common/dto/response.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Post('register')
-  registerUser(@Body() createUserDto: CreateUserDto) {
-    return this.authService.registerUser(createUserDto);
+  async registerUser(@Body() createUserDto: CreateUserDto) {
+    const user=await this.authService.registerUser(createUserDto);
+    const userAuth = await this.authService.getByEmail(user.email);
+    const accessToken = await this.authService.getAccessTokenFromUser(userAuth);
+    return new ResponseSuccess('REGISTER.SUCCESS', accessToken);
   }
 
   @Post('email/register')
@@ -23,8 +26,7 @@ export class AuthController {
        const sent = await this.authService.sendEmailVerification(newUser.email);
      }
     const userAuth = await this.authService.getByEmail(newUser.email);
-    const accessToken = await this.authService.getAccessTokenFromUser(userAuth);
-    return new ResponseSuccess('LOGIN.EMAIL_VERIFIED', accessToken);
+    return new ResponseSuccess('REGISTER.EMAIL_VERIFIED', userAuth);
   }
 
   @Post('login')

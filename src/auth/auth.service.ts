@@ -2,26 +2,31 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { UserAuth } from './models/user-auth';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { CreateUserDto } from 'src/users/dto/user.dto';
-import { UsersService } from 'src/users/users.service';
-import { User } from 'src/users/models/user';
+import { CreateUserDto } from '../users/dto/user.dto';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/models/user';
 import {  compare } from 'bcrypt';
 import { EmailVerification } from './models/email-verification';
 import { JwtService } from '@nestjs/jwt';
 import { MailerService } from '@nestjs-modules/mailer';
-import { AppException } from 'src/common/exception/app.exception';
-import { APP_ERROR_CODES } from 'src/common/constants/api-error-codes';
-import { getRandomEmailOtp } from 'src/common/utils/helpers';
+import { AppException } from '../common/exception/app.exception';
+import { APP_ERROR_CODES } from '../common/constants/api-error-codes';
+import { getRandomEmailOtp } from '../common/utils/helpers';
 import {
   EMAIL_TEMPLATES,
-} from 'src/common/constants/application.contants';
+} from '../common/constants/application.contants';
 import { join } from 'path';
+import { Wishlist } from '../wishlist/models/wishlist';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(UserAuth)
     private readonly userAuthModel: ReturnModelType<typeof UserAuth>,
+
+    @InjectModel(Wishlist)
+    private readonly wishlisModel: ReturnModelType<typeof Wishlist>,
+
     @InjectModel(EmailVerification)
     private readonly emailVerificationModel: ReturnModelType<
       typeof EmailVerification
@@ -38,6 +43,7 @@ export class AuthService {
       const userAuth = new UserAuth();
       userAuth.email = email;
       userAuth.password = password;
+      this.createWishList(email);
       return this.userAuthModel.create(userAuth).then(userAuthCreated => {
         return this.usersService.create({
           _id: userAuthCreated._id,
@@ -46,12 +52,19 @@ export class AuthService {
           firstname,
           lastname
         });
+        
       });
     } else if (userAuthRegistered.emailVerified === false) {
       return await this.usersService.getByEmail(email);
     } else {
       throw new AppException(APP_ERROR_CODES.REGISTRATION.EMAIL_ALREADY_EXISTS);
     }
+  }
+  createWishList(email: string)
+  {
+    const wishlist=new Wishlist;
+    wishlist.userEmail=email;
+    this.wishlisModel.create(wishlist)
   }
 
   create(userAuth: UserAuth): Promise<UserAuth> {

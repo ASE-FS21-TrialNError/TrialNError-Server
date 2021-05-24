@@ -3,18 +3,21 @@ import { AuthService } from './auth.service';
 import { UserAuth } from './models/user-auth';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { AuthController } from './auth.controller';
-import { UsersModule } from 'src/users/users.module';
+import { UsersModule } from '../users/users.module';
 import { EmailVerification } from './models/email-verification';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './jwt.strategy';
-import { ENV_KEYS } from 'src/common/constants/application.contants';
+import { ENV_KEYS } from '../common/constants/application.contants';
+import { Wishlist } from '../wishlist/models/wishlist';
+import { WishlistModule } from '../wishlist/wishlist.module';
 
 @Module({
   imports: [
     TypegooseModule.forFeature([
       UserAuth,
       EmailVerification,
+      Wishlist
     ]),
     JwtModule.registerAsync({
       inject: [ConfigService],
@@ -29,6 +32,7 @@ import { ENV_KEYS } from 'src/common/constants/application.contants';
       },
     }),
     UsersModule,
+    WishlistModule,
   ],
   providers: [AuthService, JwtStrategy],
   controllers: [AuthController],

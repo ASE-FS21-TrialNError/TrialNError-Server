@@ -1,6 +1,6 @@
 
-
-
+<!-- [![Coverage Status](https://coveralls.io/repos/github/ASE-FS21-TrialNError/TrialNError-Server/badge.svg?branch=main)](https://coveralls.io/github/ASE-FS21-TrialNError/TrialNError-Server?branch=main)
+ -->
 
 ## Description
 Prerequisite  is laster Nodejs version
