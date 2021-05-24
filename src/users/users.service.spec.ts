@@ -1,26 +1,26 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "nestjs-typegoose";
-import { AppsService } from "./apps.service"
+import { UsersService } from "./users.service"
 
-describe ('AppsService', () => {
-    let service: AppsService;
+describe ('UsersService', () => {
+    let service: UsersService;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [
-                AppsService,
+                UsersService,
                 {
-                    provide: getModelToken('Apps'),
+                    provide: getModelToken('User'),
                     useValue: {}
                 },
             ],
         })
         .compile();
 
-        service = module.get<AppsService>(AppsService);
+        service = module.get<UsersService>(UsersService);
     });
 
-    it('AppsService should be defined', () => {
+    it('UsersService should be defined', () => {
         expect(service).toBeDefined();
     });
 });

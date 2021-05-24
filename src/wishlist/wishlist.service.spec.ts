@@ -1,14 +1,18 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { getModelToken } from "nestjs-typegoose";
-import { AppsService } from "./apps.service"
+import { WishlistService } from "./wishlist.service"
 
-describe ('AppsService', () => {
-    let service: AppsService;
+describe ('WishlistService', () => {
+    let service: WishlistService;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [
-                AppsService,
+                WishlistService,
+                {
+                    provide: getModelToken('Wishlist'),
+                    useValue: {}
+                },
                 {
                     provide: getModelToken('Apps'),
                     useValue: {}
@@ -17,10 +21,10 @@ describe ('AppsService', () => {
         })
         .compile();
 
-        service = module.get<AppsService>(AppsService);
+        service = module.get<WishlistService>(WishlistService);
     });
 
-    it('AppsService should be defined', () => {
+    it('WishlistService should be defined', () => {
         expect(service).toBeDefined();
     });
 });
