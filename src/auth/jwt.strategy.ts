@@ -6,6 +6,7 @@ import { UsersService } from '../users/users.service';
 import { UserDto } from '../users/dto/user.dto';
 import { ENV_KEYS } from '../common/constants/application.contants';
 
+//JWT Token configurations 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(

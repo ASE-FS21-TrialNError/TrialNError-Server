@@ -2,7 +2,7 @@ import { IsEmail, IsNotEmpty } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { Types } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-
+//Create User DTO object
 export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty()

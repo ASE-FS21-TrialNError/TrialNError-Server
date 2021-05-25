@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { IResponse } from '../common/interface/response.interface';
 import { ResponseSuccess } from '../common/dto/response.dto';
 
+//Endpoint for register and login 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -26,8 +27,7 @@ export class AuthController {
        const sent = await this.authService.sendEmailVerification(newUser.email);
      }
     const userAuth = await this.authService.getByEmail(newUser.email);
-    const accessToken = await this.authService.getAccessTokenFromUser(userAuth);
-    return new ResponseSuccess('LOGIN.EMAIL_VERIFIED', accessToken);
+    return new ResponseSuccess('REGISTER.EMAIL_VERIFIED', userAuth);
   }
 
   @Post('login')

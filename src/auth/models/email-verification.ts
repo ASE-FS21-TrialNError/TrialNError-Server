@@ -1,6 +1,6 @@
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 import { prop } from '@typegoose/typegoose';
-
+//email verification model
 export class EmailVerification extends Base {
   @prop({ unique: true, required: true })
   email!: string;

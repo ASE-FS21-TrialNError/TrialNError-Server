@@ -3,7 +3,7 @@ import { AppsService } from './apps.service';
 import { JwtAuthGaurd } from '../common/utils/helpers';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
-
+//API for get ALL apps and App by ID
 @ApiBearerAuth()
 @UseGuards(JwtAuthGaurd())
 @Controller('apps')
