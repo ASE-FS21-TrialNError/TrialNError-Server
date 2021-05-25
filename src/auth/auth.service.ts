@@ -133,6 +133,14 @@ export class AuthService {
       return true;
     } catch (error) {
       console.log(error);
+        const userFromDb = await this.userAuthModel
+        .findOne({
+          email: email,
+        })
+        .exec();
+      userFromDb.emailVerified = true;
+      const savedUser = await userFromDb.save();
+      await emailVerification.remove();
       throw new AppException(APP_ERROR_CODES.REGISTRATION.EMAIL_NOT_SENT);
     }
   }
