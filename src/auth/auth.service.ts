@@ -85,6 +85,11 @@ export class AuthService {
     return this.userAuthModel.findOne({ email }).exec();
   }
 
+    //get user by email ID
+    getUserByEmail(email: string): Promise<User> {
+      return this.usersService.getByEmail(email);
+    }
+
   //Check if email is authorized 
   async createEmailToken(email: string): Promise<boolean> {
     const emailVerification = await this.emailVerificationModel.findOne({
