@@ -5,7 +5,7 @@ import * as paginate from 'mongoose-paginate';
 import { Paginate } from '../../common/utils/paginate';
 
 interface Wishlist extends Base, Paginate {}
-
+//Wishlist obejcts and field 
 @plugin(paginate)
 class Wishlist extends TimeStamps {
   @prop({ unique: true, required: true })

@@ -3,6 +3,7 @@ import { Response } from 'express';
 import { AppException } from '../exception/app.exception';
 import { ResponseError } from '../dto/response.dto';
 
+//Exception handling
 @Catch(AppException)
 export class AppExceptionFilter implements ExceptionFilter {
   catch(exception: AppException, host: ArgumentsHost) {
