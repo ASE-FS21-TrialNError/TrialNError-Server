@@ -44,5 +44,11 @@ export class WishListController {
     ){
         return this.wishlistService.getAppsInWishlist(user);
       }
+      @Get('getApps')
+    getAppsWishList(
+      @AuthUser() user: UserDto,
+    ) {
+      return this.wishlistService.getApps(user);
+    }
 
 }
