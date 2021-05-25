@@ -2,7 +2,7 @@ import { Injectable,HttpException,HttpStatus } from '@nestjs/common';
 import { Apps } from './models/apps';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { PaginatedResponse } from 'src/common/interface/paginated.response';
+import { PaginatedResponse } from '../common/interface/paginated.response';
 
 @Injectable()
 export class AppsService {
