@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30.99% </span>
+                <span class="strong">28.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/71</span>
+                <span class='fraction'>22/77</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.33% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/12</span>
+                <span class='fraction'>1/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.99% </span>
+                <span class="strong">26.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/69</span>
+                <span class='fraction'>20/75</span>
             </div>
         
             
@@ -248,7 +248,21 @@
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
 <a name='L191'></a><a href='#L191'>191</a>
-<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -298,6 +312,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -340,6 +355,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -381,6 +401,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -486,6 +514,7 @@ export class AuthService {
       const userAuth = <span class="cstat-no" title="statement not covered" >new UserAuth();</span>
 <span class="cstat-no" title="statement not covered" >      userAuth.email = email;</span>
 <span class="cstat-no" title="statement not covered" >      userAuth.password = password;</span>
+<span class="cstat-no" title="statement not covered" >      userAuth.emailVerified=false;</span>
 <span class="cstat-no" title="statement not covered" >      this.createWishList(email);</span>
 <span class="cstat-no" title="statement not covered" >      return this.userAuthModel.create(userAuth).then(<span class="fstat-no" title="function not covered" >userAuthCreated </span>=&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return this.usersService.create({</span>
@@ -524,6 +553,11 @@ export class AuthService {
 <span class="fstat-no" title="function not covered" >  getByEmail(</span>email: string): Promise&lt;UserAuth&gt; {
 <span class="cstat-no" title="statement not covered" >    return this.userAuthModel.findOne({ email }).exec();</span>
   }
+&nbsp;
+    //get user by email ID
+<span class="fstat-no" title="function not covered" >    getUserByEmail(</span>email: string): Promise&lt;User&gt; {
+<span class="cstat-no" title="statement not covered" >      return this.usersService.getByEmail(email);</span>
+    }
 &nbsp;
   //Check if email is authorized 
 <span class="fstat-no" title="function not covered" >  async </span>createEmailToken(email: string): Promise&lt;boolean&gt; {
@@ -573,6 +607,14 @@ export class AuthService {
 <span class="cstat-no" title="statement not covered" >      return true;</span>
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >      console.log(error);</span>
+        const userFromDb = <span class="cstat-no" title="statement not covered" >await this.userAuthModel</span>
+        .findOne({
+          email: email,
+        })
+        .exec();
+<span class="cstat-no" title="statement not covered" >      userFromDb.emailVerified = true;</span>
+      const savedUser = <span class="cstat-no" title="statement not covered" >await userFromDb.save();</span>
+<span class="cstat-no" title="statement not covered" >      await emailVerification.remove();</span>
 <span class="cstat-no" title="statement not covered" >      throw new AppException(APP_ERROR_CODES.REGISTRATION.EMAIL_NOT_SENT);</span>
     }
   }
@@ -637,7 +679,7 @@ export class AuthService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue May 25 2021 01:46:53 GMT+0200 (Централноевропейско лятно часово време)
+                at Tue May 25 2021 21:54:29 GMT+0200 (Централноевропейско лятно часово време)
             </div>
         </div>
         <script src="../../prettify.js"></script>
