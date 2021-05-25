@@ -45,6 +45,7 @@ export class AuthService {
       const userAuth = new UserAuth();
       userAuth.email = email;
       userAuth.password = password;
+      userAuth.emailVerified=false;
       this.createWishList(email);
       return this.userAuthModel.create(userAuth).then(userAuthCreated => {
         return this.usersService.create({
