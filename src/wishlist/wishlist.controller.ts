@@ -7,7 +7,7 @@ import { UserDto } from '../users/dto/user.dto';
 import { ObjectId } from 'mongoose';
 import {AppseDto} from './dto/apps.dto';
 
-
+/*authorised API endpoint*/
 @ApiBearerAuth()
 @UseGuards(JwtAuthGaurd())
 @Controller('wishlist')

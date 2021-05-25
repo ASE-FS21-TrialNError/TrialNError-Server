@@ -9,6 +9,7 @@ import { PaginatedResponse } from '../common/interface/paginated.response';
 import { ObjectId } from 'mongoose';
 import {AppseDto} from './dto/apps.dto';
 
+/* This is Service for Get, Add and delete the Wishlist of the user*/
 
 @Injectable()
 export class WishlistService {
@@ -18,7 +19,9 @@ export class WishlistService {
     @InjectModel(Apps) 
     private readonly appsModel: ReturnModelType<typeof Apps>,
   ) {}
+  //function to add Apps to wishlist 
   async addApp(appId: ObjectId,user: UserDto) {
+    //Get Wishlist object from DB using the email ID 
       const wishList = await this.wishlistModel.findOne({userEmail:user.email})
             .catch(err => {
               throw new HttpException('WishList Not Found', HttpStatus.NOT_FOUND);
@@ -30,11 +33,12 @@ export class WishlistService {
       })
       let apps=wishList.apps;
       apps.push(appId);
-      apps=apps.filter((v, i, a) => a.indexOf(v) === i);
+      apps=apps.filter((v, i, a) => a.indexOf(v) === i); // ADD the appId to wishList
       await this.wishlistModel.findByIdAndUpdate(wishList._id,{apps})
       return new ResponseSuccess<void>('APP ADDEDED FROM WISHLIST');
   }
 
+  //remove the App from wishlist
   async deleteApp(appId: ObjectId,user: UserDto) {
     const wishList = await this.wishlistModel.findOne({userEmail:user.email})
           .catch(err => {
@@ -53,6 +57,7 @@ export class WishlistService {
     await this.wishlistModel.findByIdAndUpdate(wishList._id,{apps})
     return new ResponseSuccess<void>('APP DELETED FROM WISHLIST');
   }
+  //Delete Mutiple Apps from wishlist
   async deleteApps(user: UserDto,appsList:AppseDto) {
     const wishList = await this.wishlistModel.findOne({userEmail:user.email})
           .catch(err => {
@@ -73,6 +78,7 @@ export class WishlistService {
     return new ResponseSuccess<void>('APPS DELETED FROM WISHLIST');
   }
 
+  //Get the List of all appIDs from wishList
   async getAppsInWishlist(user: UserDto) : Promise<Wishlist> {
     return await this.wishlistModel.findOne({userEmail:user.email})
           .catch(err => {
@@ -80,6 +86,7 @@ export class WishlistService {
           })
           .then(result => result);    
   }
+   //Get the List of all apps from wishList
   async getApps(user: UserDto) : Promise<Apps[]> {
     const wishlist= await this.wishlistModel.findOne({userEmail:user.email})
           .catch(err => {

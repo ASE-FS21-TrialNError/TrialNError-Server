@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { IResponse } from '../common/interface/response.interface';
 import { ResponseSuccess } from '../common/dto/response.dto';
 
+//Endpoint for register and login 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

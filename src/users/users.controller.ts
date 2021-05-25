@@ -13,11 +13,12 @@ import { UserProfileDto } from './dto/user-profile.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  //Get endpoint for get all users 
   @Get()
   async getUsers(@AuthUser() user: User): Promise<User[] | null> {
     return await this.usersService.findAll();
   }
-
+ //Get endpoint for get  users info
   @Get('profile')
   getUser(@AuthUser() user: UserDto): UserProfileDto {
    // await this.usersService.getUser()
