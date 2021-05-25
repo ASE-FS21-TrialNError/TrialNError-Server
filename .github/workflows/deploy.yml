@@ -29,14 +29,13 @@ jobs:
     - name: npm install
       run: npm install
 
-    - name: Test ${{ matrix.test_number }}
-      run: make test-coverage-${{ matrix.test_number }}
-    - name: Coveralls Parallel
+    - name:  make test-coverage
+      run: npm run test:cov
+    - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.github_token }}
-        flag-name: run-${{ matrix.test_number }}
-        parallel: true
+        
     # uncomment for assignment 2-4
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
