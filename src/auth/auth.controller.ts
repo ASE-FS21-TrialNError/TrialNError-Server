@@ -26,8 +26,9 @@ export class AuthController {
      if (shouldSendEmail) {
        const sent = await this.authService.sendEmailVerification(newUser.email);
      }
-    const userAuth = await this.authService.getByEmail(newUser.email);
-    return new ResponseSuccess('REGISTER.EMAIL_VERIFIED', userAuth);
+    const user= await this.authService.getUserByEmail(newUser.email);
+    
+    return new ResponseSuccess('REGISTER.EMAIL_VERIFIED', user);
   }
 
   @Post('login')

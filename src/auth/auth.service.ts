@@ -45,6 +45,7 @@ export class AuthService {
       const userAuth = new UserAuth();
       userAuth.email = email;
       userAuth.password = password;
+      userAuth.emailVerified=false;
       this.createWishList(email);
       return this.userAuthModel.create(userAuth).then(userAuthCreated => {
         return this.usersService.create({
@@ -83,6 +84,11 @@ export class AuthService {
   getByEmail(email: string): Promise<UserAuth> {
     return this.userAuthModel.findOne({ email }).exec();
   }
+
+    //get user by email ID
+    getUserByEmail(email: string): Promise<User> {
+      return this.usersService.getByEmail(email);
+    }
 
   //Check if email is authorized 
   async createEmailToken(email: string): Promise<boolean> {
@@ -132,6 +138,14 @@ export class AuthService {
       return true;
     } catch (error) {
       console.log(error);
+        const userFromDb = await this.userAuthModel
+        .findOne({
+          email: email,
+        })
+        .exec();
+      userFromDb.emailVerified = true;
+      const savedUser = await userFromDb.save();
+      await emailVerification.remove();
       throw new AppException(APP_ERROR_CODES.REGISTRATION.EMAIL_NOT_SENT);
     }
   }
