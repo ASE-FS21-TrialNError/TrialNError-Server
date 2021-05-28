@@ -33,12 +33,12 @@ export class AppsService {
     let  filter = { };
     filter =!category_andr?filter: { ...filter, category_andr};
     filter =!category_ios?filter: { ...filter, category_ios};
-    filter =!price_andr?filter: (this.getFieldRange(price_andr).$lt?{ ...filter, price_andr:this.getFieldRange(price_andr)}:filter);
-    filter =!price_ios?filter: (this.getFieldRange(price_ios).$lt?{ ...filter, price_ios:this.getFieldRange(price_ios)}:filter);
-    filter =!rating_andr?filter: (this.getFieldRange(rating_andr).$lt?{ ...filter, rating_andr:this.getFieldRange(rating_andr)}:filter);
-    filter =!rating_ios?filter: (this.getFieldRange(rating_ios).$lt?{ ...filter, rating_ios:this.getFieldRange(rating_ios)}:filter);
-    filter =!rating_count_andr?filter: (this.getFieldRange(rating_count_andr).$lt?{ ...filter, rating_count_andr:this.getFieldRange(rating_count_andr)}:filter);
-    filter =!rating_count_ios?filter: (this.getFieldRange(rating_count_ios).$lt?{ ...filter, rating_count_ios:this.getFieldRange(rating_count_ios)}:filter);
+    filter =!price_andr?filter: (this.getFieldRange(price_andr).$lte?{ ...filter, price_andr:this.getFieldRange(price_andr)}:filter);
+    filter =!price_ios?filter: (this.getFieldRange(price_ios).$lte?{ ...filter, price_ios:this.getFieldRange(price_ios)}:filter);
+    filter =!rating_andr?filter: (this.getFieldRange(rating_andr).$lte?{ ...filter, rating_andr:this.getFieldRange(rating_andr)}:filter);
+    filter =!rating_ios?filter: (this.getFieldRange(rating_ios).$lte?{ ...filter, rating_ios:this.getFieldRange(rating_ios)}:filter);
+    filter =!rating_count_andr?filter: (this.getFieldRange(rating_count_andr).$lte?{ ...filter, rating_count_andr:this.getFieldRange(rating_count_andr)}:filter);
+    filter =!rating_count_ios?filter: (this.getFieldRange(rating_count_ios).$lte?{ ...filter, rating_count_ios:this.getFieldRange(rating_count_ios)}:filter);
     filter =!content_rating_andr?filter: { ...filter, content_rating_andr};
     filter =!content_rating_ios?filter: { ...filter, content_rating_ios};
 
@@ -77,12 +77,12 @@ export class AppsService {
   //parse the range filter field 
   getFieldRange(rangeField :string){
     var splittedRange = rangeField.split("_", 2); 
-    var $gt: number = +splittedRange[0];
-    var $lt: number = +splittedRange[1];
-    if( splittedRange.length!=2|| $gt==NaN||$lt ==NaN ||$gt>$lt ){
+    var $gte: number = +splittedRange[0];
+    var $lte: number = +splittedRange[1];
+    if( splittedRange.length!=2|| $gte==NaN||$lte ==NaN ||$gte>$lte ){
       return {}
     }
-    return { $gt , $lt }
+    return { $gte , $lte }
   }
 
   //get app by ID 
