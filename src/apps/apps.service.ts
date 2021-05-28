@@ -56,13 +56,11 @@ export class AppsService {
         if(splittedSort[1]=='D') //D is DESC order
         {
           sortFilter={...sortFilter,sort:{ [splittedSort[0]]: -1 }} // -1 is DESC order in mongodb
-          filter= { ...filter, [splittedSort[0]]: {$exists: true,$gt: -1}}
          
         } else if(splittedSort[1]=='A') //A is ASC Order
         {
           
           sortFilter={...sortFilter,sort:{ [splittedSort[0]]: 1 }} // 1 is ASC order in mongodb
-          filter= { ...filter, [splittedSort[0]]: {$exists: true,$gt: -1}}
         }
       }
     }
