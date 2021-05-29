@@ -5,7 +5,7 @@
 # TrialNError-Server
 
 ## General information
-This application server provides authentication as well as app administration. This app was created using the [nestjs](https://nestjs.com/) framework and stores data in [MongoDB](https://www.mongodb.com/).
+This application server provides authentication as well as app administration. This app was created using the [nestjs](https://nestjs.com/) with TypeScript as programming language  For Backend Framework and Database is  [MongoDB](https://www.mongodb.com/).
 
 ## High-level components
 
@@ -23,6 +23,13 @@ These four components are inextricably linked since they enable user authenticat
 Check out our client project [:desktop_computer: client repo](https://github.com/ASE-FS21-TrialNError/TrialNError-Client).
 
 Check out our recommendation project [:hourglass:recommendation repo ](https://github.com/ASE-FS21-TrialNError/TrialNError-Python).
+
+### For API Documentation  [Home](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki)
+
+   * [REST API's Page](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API) 
+   * [REST API Authentication](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Authentication)
+   * [REST API Wishlist](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Wishlist)
+
 
 ## Launch & Deployment - for joining developers
 
