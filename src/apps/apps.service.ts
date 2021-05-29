@@ -77,9 +77,10 @@ export class AppsService {
   //parse the range filter field 
   getFieldRange(rangeField :string){
     var splittedRange = rangeField.split("_", 2); 
-    var $gte: number = +splittedRange[0];
-    var $lte: number = +splittedRange[1];
-    if( splittedRange.length!=2|| $gte==NaN||$lte ==NaN ||$gte>$lte ){
+    var $gt: number = +splittedRange[0];
+    var $lt: number = +splittedRange[1];
+    if( splittedRange.length!=2|| Number.isNaN($gt)||Number.isNaN($lt) ||$gt>$lt ){
+
       return {}
     }
     return { $gte , $lte }
