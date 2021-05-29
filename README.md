@@ -5,7 +5,7 @@
 # TrialNError-Server
 
 ## General information
-This application server provides authentication as well as app administration. This app was created using the [nestjs](https://nestjs.com/) with TypeScript as programming language and is a application server framework. As a database we used [MongoDB](https://www.mongodb.com/). Further information about the 
+This repository is part of the project AppCom and contains the code for the application server provides authentication as well as app administration. The application was created using [nestjs](https://nestjs.com/)  with Typescript. As a database we used [MongoDB](https://www.mongodb.com/). Further information about the 
 project can be found in the ["Additional information"](#additionalInformation) section.
 
 ## High-level components
