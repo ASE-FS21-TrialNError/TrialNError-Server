@@ -81,7 +81,7 @@ export class AppsService {
     var splittedRange = rangeField.split("_", 2); 
     var $gt: number = +splittedRange[0];
     var $lt: number = +splittedRange[1];
-    if( splittedRange.length!=2|| $gt==NaN||$lt ==NaN ||$gt>$lt ){
+    if( splittedRange.length!=2|| Number.isNaN($gt)||Number.isNaN($lt) ||$gt>$lt ){
       return {}
     }
     return { $gt , $lt }
