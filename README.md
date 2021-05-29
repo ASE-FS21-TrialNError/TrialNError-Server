@@ -5,7 +5,8 @@
 # TrialNError-Server
 
 ## General information
-This application server provides authentication as well as app administration. This app was created using the [nestjs](https://nestjs.com/) with TypeScript as programming language and is a application server framework. As a database we used [MongoDB](https://www.mongodb.com/).
+This application server provides authentication as well as app administration. This app was created using the [nestjs](https://nestjs.com/) with TypeScript as programming language and is a application server framework. As a database we used [MongoDB](https://www.mongodb.com/). Further information about the 
+project can be found in the ["Additional information"](#additionalInformation) section.
 
 ## High-level components
 
@@ -89,7 +90,7 @@ For information regarding the setup of the CI/CD pipeline of the server repo, pl
 
 For information regarding the MongoDB Data Model, please refer to the specific Project Wiki [page](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/MongoDB-Data-model).
 
-## Additional information (not specific to this repository)
+## Additional information (not specific to this repository)<a name="additionalInformation"></a>
 
 For additional information please refer to the Project Wiki:
 
