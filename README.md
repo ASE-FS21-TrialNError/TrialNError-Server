@@ -27,7 +27,7 @@ Check out our client repository [:desktop_computer: client repo](https://github.
 
 Check out our app recommendation repository [:hourglass: python repo ](https://github.com/ASE-FS21-TrialNError/TrialNError-Python).
 
-## [API documentation](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki)
+## REST API documentation [:link:](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki)
 
    * [REST APIs Apps](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-APIs-Apps) 
    * [REST APIs Authentication](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-APIs-Authentication)
@@ -95,7 +95,7 @@ For information regarding the setup of the CI/CD pipeline of the server repo, pl
 
 For information regarding the MongoDB Data Model, please refer to the specific Project Wiki [page](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/MongoDB-Data-model).
 
-## Additional information (not specific to this repository)<a name="additionalInformation"></a>
+## Additional information (General)<a name="additionalInformation"></a>
 
 For additional information please refer to the Project Wiki:
 
