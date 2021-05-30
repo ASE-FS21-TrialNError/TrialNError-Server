@@ -1,4 +1,4 @@
-name: deploy heroku and SonarCloud
+name: deploy and SonarCloud
 
 on: 
   push:
