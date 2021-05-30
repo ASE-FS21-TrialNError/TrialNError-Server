@@ -27,7 +27,7 @@ Check out our client repository [:desktop_computer: client repo](https://github.
 
 Check out our app recommendation repository [:hourglass: python repo ](https://github.com/ASE-FS21-TrialNError/TrialNError-Python).
 
-### [API documentation](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki)
+## [API documentation](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki)
 
    * [REST API's Apps](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Apps) 
    * [REST API Authentication](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Authentication)
