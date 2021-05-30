@@ -1,5 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/ASE-FS21-TrialNError/TrialNError-Server/badge.svg?branch=main)](https://coveralls.io/github/ASE-FS21-TrialNError/TrialNError-Server?branch=main)
 [![Deploy](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/actions/workflows/deploy.yml/badge.svg)](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/actions/workflows/deploy.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ASE-FS21-TrialNError_TrialNError-Server&metric=alert_status)](https://sonarcloud.io/dashboard?id=ASE-FS21-TrialNError_TrialNError-Server)
 
 
 # TrialNError-Server
