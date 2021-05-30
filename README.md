@@ -8,6 +8,7 @@
 This repository is part of the project AppCom and contains the code for the application server provides authentication as well as app administration. The application was created using [nestjs](https://nestjs.com/)  with Typescript. As a database we used [MongoDB](https://www.mongodb.com/). Further information about the 
 project can be found in the ["Additional information"](#additionalInformation) section.
 
+
 ## High-level components
 
 - **[Authentication Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/blob/main/src/auth/auth.controller.spec.ts)**: This controller handles all authentication related requests from the client.
@@ -31,6 +32,9 @@ Check out our app recommendation repository [:hourglass: python repo ](https://g
    * [REST API Authentication](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Authentication)
    * [REST API Wishlist](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Wishlist)
 
+
+## Demo
+Click [here](https://appcom-trailnerror.herokuapp.com/) for Live demo
 
 ## Launch & Deployment - for joining developers
 
