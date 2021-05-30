@@ -1,5 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/ASE-FS21-TrialNError/TrialNError-Server/badge.svg?branch=main)](https://coveralls.io/github/ASE-FS21-TrialNError/TrialNError-Server?branch=main)
 [![Deploy](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/actions/workflows/deploy.yml/badge.svg)](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/actions/workflows/deploy.yml)
+[![Coverage Status](https://coveralls.io/repos/github/ASE-FS21-TrialNError/TrialNError-Server/badge.svg?branch=main)](https://coveralls.io/github/ASE-FS21-TrialNError/TrialNError-Server?branch=main)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ASE-FS21-TrialNError_TrialNError-Server&metric=alert_status)](https://sonarcloud.io/dashboard?id=ASE-FS21-TrialNError_TrialNError-Server)
 
 
@@ -12,14 +12,14 @@ project can be found in the ["Additional information"](#additionalInformation) s
 
 ## High-level components
 
-- **[Authentication Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/blob/main/src/auth/auth.controller.spec.ts)**: This controller handles all authentication related requests from the client.
+- **[Authentication Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/blob/main/src/auth/auth.controller.ts)**: This controller handles all authentication related requests from the client.
 
-- **[Apps Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/blob/main/src/apps/apps.controller.spec.ts)**: This controller handles the  functionality of the apps.
+- **[Apps Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/blob/main/src/apps/apps.controller.ts)**: This controller handles the  functionality of the apps.
 
-- **[Wishlist Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/tree/main/src/wishlist/wishlist.controller.spec.ts)**: This controller handles the functionality of a wish list.
+- **[Wishlist Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/tree/main/src/wishlist/wishlist.controller.ts)**: This controller handles the functionality of a wish list.
 
 
-- **[User Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/tree/main/src/users/users.controller.spec.ts)**: This controller handles the functionality of users.
+- **[User Controller](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/tree/main/src/users/users.controller.ts)**: This controller handles the functionality of users.
 
 These four components are inextricably linked since they enable user authentication and apps functionality. While the wish list controller is being used to add applications to the wish list, it is also being used to delete applications from the wish list. The apps controller allows you to fetch apps with various filters.
 
@@ -29,9 +29,9 @@ Check out our app recommendation repository [:hourglass: python repo ](https://g
 
 ## [API documentation](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki)
 
-   * [REST API's Apps](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Apps) 
-   * [REST API Authentication](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Authentication)
-   * [REST API Wishlist](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-API-Wishlist)
+   * [REST APIs Apps](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-APIs-Apps) 
+   * [REST APIs Authentication](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-APIs-Authentication)
+   * [REST APIs Wishlist](https://github.com/ASE-FS21-TrialNError/TrialNError-Server/wiki/REST-APIs-Wishlist)
 
 
 ## Demo
@@ -104,7 +104,7 @@ For additional information please refer to the Project Wiki:
 - [Architecture & Technologies](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Architecture-&-Technologies)
 - [Project documentation](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Documentation)
 - [Recommender system](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Recommender-system)
-- [Outstanding problems & workarounds](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Outstanding-problems-&-workarounds)
+- [Limitations & workarounds](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Limitations-&-workarounds)
 - [Project plan](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Project-plan)
 - [Roles & Task management](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Roles-&-Tasks-management)
 - [Branch management](https://github.com/ASE-FS21-TrialNError/TrialNError-Client/wiki/Branch-management-&-Handling-of-Pull-requests)
